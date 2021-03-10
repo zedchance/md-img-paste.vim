@@ -172,10 +172,10 @@ function! mdip#MarkdownClipboardImage()
 
     let workdir = s:SafeMakeDir()
     " change temp-file-name and image-name
-    let g:mdip_tmpname = s:InputName()
-    if empty(g:mdip_tmpname)
-      let g:mdip_tmpname = g:mdip_imgname . '_' . s:RandomName()
-    endif
+    " let g:mdip_tmpname = s:InputName()
+    " if empty(g:mdip_tmpname)
+    let g:mdip_tmpname = g:mdip_imgname . '_' . s:RandomName()
+    " endif
 
     let tmpfile = s:SaveFileTMP(workdir, g:mdip_tmpname)
     if tmpfile == 1
@@ -188,7 +188,7 @@ function! mdip#MarkdownClipboardImage()
         let ipos = getcurpos()
         execute "normal! a" . g:mdip_tmpname[1:] . "](" . relpath . ")"
         call setpos('.', ipos)
-        execute "normal! vt]\<C-g>"
+        execute "normal! o"
     endif
 endfunction
 
